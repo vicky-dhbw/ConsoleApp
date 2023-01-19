@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'aes_cryptography'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+task build_jar(type: Jar) {
+    project.archivesBaseName = "aes_cryptography"
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+
+    delete "jar"
+    mkdir "jar"
+
+    copy {
+        from 'build/libs/aes_cryptography.jar'
+        into "jar"
+    }
+
+}

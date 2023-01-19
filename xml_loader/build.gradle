@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'xml_loader'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+task build_jar(type: Jar) {
+    project.archivesBaseName = "xml_loader"
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+
+    delete "jar"
+    mkdir "jar"
+
+    copy {
+        from 'build/libs/xml_loader.jar'
+        into "jar"
+    }
+
+}

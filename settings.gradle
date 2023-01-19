@@ -1,0 +1,12 @@
+rootProject.name = 'ConsoleApp'
+include 'xml_loader'
+include 'csv_loader'
+include 'json_loader'
+include 'lambdaSort'
+include 'lamda_sort'
+include 'merge_sort'
+include 'quick_sort'
+include 'aes_cryptography'
+include 'lambda_sort'
+include 'lambda_sort'
+

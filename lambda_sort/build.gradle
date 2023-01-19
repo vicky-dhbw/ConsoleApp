@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'app'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+task build_jar(type: Jar) {
+    project.archivesBaseName = "lambda_sort"
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+
+    delete "jar"
+    mkdir "jar"
+
+    copy {
+        from 'build/libs/lambda_sort.jar'
+        into "jar"
+    }
+
+}
