@@ -24,7 +24,6 @@ public class CSVLoader {
             BufferedReader bufferedReader=new BufferedReader(new FileReader(filePath));
             String line;
 
-            bufferedReader.readLine();
             while((line=bufferedReader.readLine())!=null){
                 String[] entries = line.split(";");
                 Gin gin=new Gin();

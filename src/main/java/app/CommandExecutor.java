@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 public class CommandExecutor {
-
     private CommandValidator commandValidator;
     private String command;
 
@@ -22,9 +21,8 @@ public class CommandExecutor {
         this.commandValidator = commandValidator;
     }
 
-    public void executeCommand() throws IOException, InterruptedException {
-        Object service;
-        service = commandValidator.getServiceObjectFromCommand(command);
+    public void executeCommand() throws IOException{
+        Object service = commandValidator.getServiceObjectFromCommand(command);
         if (service == null) {
             System.out.println("command not found: "+command);
         }
