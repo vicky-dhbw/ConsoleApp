@@ -9,8 +9,9 @@ import java.net.URLClassLoader;
 import java.util.List;
 
 public class QuickSort implements ISorter{
+    String[] sortedManufacturers;
     @Override
-    public void sort(List<Gin> values) {
+    public String[] sort(List<Gin> gins) {
         try{
             URL[] urls={new File(Configuration.INSTANCE.fullPathToQuickSortJavaArchive).toURI().toURL()};
             URLClassLoader urlClassLoader=new URLClassLoader(urls,QuickSort.class.getClassLoader());
@@ -20,7 +21,14 @@ public class QuickSort implements ISorter{
             Object mergeSortPort=quickSortClass.getDeclaredField("port").get(quickSortClassInstance);
 
             Method load=mergeSortPort.getClass().getMethod("sort", String[].class);
-            load.invoke(mergeSortPort,values);
+
+            sortedManufacturers=new String[gins.size()];
+
+            for(int i=0;i<sortedManufacturers.length;i++){
+                sortedManufacturers[i]=gins.get(i).getManufacturer();
+            }
+
+            load.invoke(mergeSortPort, (Object) sortedManufacturers);
 
 
 
@@ -28,5 +36,6 @@ public class QuickSort implements ISorter{
             e.printStackTrace();
         }
 
+        return sortedManufacturers;
     }
 }

@@ -10,27 +10,33 @@ import java.util.List;
 
 public class LambdaSort implements ISorter{
     @Override
-    public void sort(List<Gin> values) {
-        List<Gin> gins=new ArrayList<>();
-        gins=values;
+    public String[] sort(List<Gin> gins) {
+        String[] sortedManufacturers=new String[2];
+
         try{
             URL[] urls={new File(Configuration.INSTANCE.fullPathToLambdaSortJavaArchive).toURI().toURL()};
-            System.out.println(Configuration.INSTANCE.fullPathToLambdaSortJavaArchive);
             URLClassLoader urlClassLoader=new URLClassLoader(urls,LambdaSort.class.getClassLoader());
 
             Class<?> lambdaSortClass=Class.forName("Lambda_Sort",true,urlClassLoader);
             Object lambdaSortClassInstance=lambdaSortClass.getMethod("getInstance").invoke(null);
             Object mergeSortPort=lambdaSortClass.getDeclaredField("port").get(lambdaSortClassInstance);
 
-            Method load=mergeSortPort.getClass().getMethod("sort", List.class);
+            Method load=mergeSortPort.getClass().getMethod("sort", String[].class);
             Type[] genericParameterTypes = load.getGenericParameterTypes();
 
-            load.invoke(mergeSortPort, values);
+            sortedManufacturers=new String[gins.size()];
+
+            for(int i=0;i<sortedManufacturers.length;i++){
+                sortedManufacturers[i]=gins.get(i).getManufacturer();
+            }
+
+            load.invoke(mergeSortPort, (Object) sortedManufacturers);
 
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
+        return sortedManufacturers;
     }
 }

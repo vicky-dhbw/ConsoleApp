@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface ISorter {
 
-    void sort(List<Gin> gins);
+    String[] sort(List<Gin> gins);
 }
