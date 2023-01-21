@@ -30,7 +30,7 @@ public class MacroService {
                 System.out.println("creating new fine named "+filename+" ......");
             }
         }
-
+        System.out.println("-- to finish writing script type finish macro [filename] --");
         System.out.println("write your script below this line :)");
         BufferedWriter writer=new BufferedWriter(new FileWriter(macroFile.getPath(),true));
         String input="";
@@ -52,8 +52,6 @@ public class MacroService {
             try{
                 BufferedReader reader=new BufferedReader(new FileReader(Configuration.INSTANCE.pathToDataDir+System.getProperty("file.separator")+filename));
                 String line;
-
-
 
                 while((line=reader.readLine())!=null){
                     CommandExecutor commandExecutor=new CommandExecutor(line);

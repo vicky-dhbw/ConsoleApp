@@ -7,14 +7,13 @@ import java.util.List;
 
 public class LoadService{
 
-    private IFileLoader fileLoader;
     private String filename;
 
     public List<Gin> executeLoadService(String command){
         List<Gin> gins=new ArrayList<>();
         filename=command.split(" ")[2];
-        fileLoader=getFileExtensionClassLoader(filename);
-        if(fileLoader==null){
+        IFileLoader fileLoader = getFileExtensionClassLoader(filename);
+        if(fileLoader ==null){
             System.out.println("file extension not supported");
         }
         else {

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CommandValidatorGetter {
-    private String command;
+    private final String command;
 
     public CommandValidatorGetter(String command){
         this.command=command;
