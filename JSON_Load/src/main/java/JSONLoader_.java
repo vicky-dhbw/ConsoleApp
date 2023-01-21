@@ -1,26 +1,25 @@
 import com.fasterxml.jackson.core.type.TypeReference;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import common.org.Gin;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JSONLoader {
-    private static final JSONLoader jsonLoaderInstance=new JSONLoader();
+public class JSONLoader_ {
+    private static final JSONLoader_ jsonLoaderInstance=new JSONLoader_();
     public Port port;
-    public JSONLoader(){
+    private List<Gin> gins=new ArrayList<>();
+    public JSONLoader_(){
         port=new Port();
     }
 
-
-    public static JSONLoader getInstance(){
+    public static JSONLoader_ getInstance(){
         return jsonLoaderInstance;
     }
+
     public List<Gin> innerLoad(String filePath) {
         ObjectMapper objectMapper=new ObjectMapper();
         File file=new File(filePath);
-        List<Gin> gins=new ArrayList<>();
         try {
             gins= objectMapper.readValue(file, new TypeReference<>() {
             });
@@ -38,3 +37,4 @@ public class JSONLoader {
         }
     }
 }
+

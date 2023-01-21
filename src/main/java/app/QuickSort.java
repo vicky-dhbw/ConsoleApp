@@ -1,13 +1,16 @@
 package app;
 
+import common.org.Gin;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.List;
 
 public class QuickSort implements ISorter{
     @Override
-    public void sort(String[] values) {
+    public void sort(List<Gin> values) {
         try{
             URL[] urls={new File(Configuration.INSTANCE.fullPathToQuickSortJavaArchive).toURI().toURL()};
             URLClassLoader urlClassLoader=new URLClassLoader(urls,QuickSort.class.getClassLoader());
@@ -17,11 +20,8 @@ public class QuickSort implements ISorter{
             Object mergeSortPort=quickSortClass.getDeclaredField("port").get(quickSortClassInstance);
 
             Method load=mergeSortPort.getClass().getMethod("sort", String[].class);
-            load.invoke(mergeSortPort, (Object) values);
+            load.invoke(mergeSortPort,values);
 
-            for(String manufacturer:values){
-                System.out.println(manufacturer);
-            }
 
 
         }catch (Exception e){

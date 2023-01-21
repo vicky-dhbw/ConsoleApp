@@ -13,11 +13,7 @@ public class Lambda_Sort {
     }
 
     public void innerSort(String[] values){
-        List<String> arrayList= Arrays.asList(values);
-        arrayList.sort(String::compareTo);
-        for(int i=0;i<values.length;i++){
-            values[i]= arrayList.get(i);
-        }
+        Arrays.sort(values);
     }
     public class Port implements ILambdaSort{
 

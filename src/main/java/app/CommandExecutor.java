@@ -1,15 +1,14 @@
 package app;
-
+import common.org.Gin;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 public class CommandExecutor {
 
     private CommandValidator commandValidator;
     private String command;
 
-    private static ArrayList<String> manufacturers=new ArrayList<>();
+    private static List<Gin> manufacturers=new ArrayList<>();
     public CommandExecutor(String command){
         this.command=command;
         commandValidator=new CommandValidator();
@@ -32,7 +31,10 @@ public class CommandExecutor {
         else{
             if(service.getClass()==LoadService.class){
                 LoadService loadService=new LoadService();
-                manufacturers=loadService.executeLoadService(command);
+                manufacturers= loadService.executeLoadService(command);
+                if(manufacturers!=null){
+                    System.out.println("data successfully loaded... :)");
+                }
             } else if (service.getClass()==SortService.class) {
                 if(manufacturers.size()!=0){
                     SortService sortService=new SortService();

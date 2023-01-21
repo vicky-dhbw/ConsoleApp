@@ -3,7 +3,6 @@ plugins {
 }
 
 group 'app'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -11,6 +10,13 @@ repositories {
 
 dependencies {
     implementation 'commons-io:commons-io:2.6'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.14.1'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.14.1'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.1'
+    implementation project(":common")
 }
 
 test {

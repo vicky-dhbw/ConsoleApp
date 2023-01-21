@@ -1,15 +1,15 @@
 package app;
-
+import common.org.Gin;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
+import java.util.List;
 
 public class XML_Loader implements IFileLoader,ISearchFile{
     @Override
     @SuppressWarnings("unchecked")
-    public ArrayList<String> loadFile(String filename) {
+    public List<Gin> loadFile(String filename) {
         if(searchFile(filename)){
             try{
                 URL[] urls={new File(Configuration.INSTANCE.fullPathToXMLLoaderJavaArchive).toURI().toURL()};
@@ -20,16 +20,15 @@ public class XML_Loader implements IFileLoader,ISearchFile{
                 Object xmlLoaderPort=xmlLoaderClass.getDeclaredField("port").get(xmlLoaderInstance);
 
                 Method load=xmlLoaderPort.getClass().getMethod("load", String.class);
-                System.out.println("data successfully loaded :)");
 
-                return (ArrayList<String>) load.invoke(xmlLoaderPort,Configuration.INSTANCE.pathToXMLFile);
+                return (List<Gin>) load.invoke(xmlLoaderPort,Configuration.INSTANCE.pathToXMLFile);
 
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
         System.out.println("data failed to load :(");
-        return new ArrayList<String>();
+        return null;
     }
 
     @Override

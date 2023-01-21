@@ -1,18 +1,20 @@
 package app;
 
+import common.org.Gin;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class SortService {
 
     private String algorithm;
 
-    public void executeSortService(ArrayList<String> manufacturers,String command){
+    public void executeSortService(List<Gin> gins, String command){
         String[] subCommands=command.split(" ");
         algorithm=subCommands[4];
         ISorter sorter = getSorterClass();
         if(sorter!=null){
-            String[] values=manufacturers.stream().toList().toArray(new String[0]);
-            sorter.sort(values);
+            sorter.sort(gins);
         }
     }
     public ISorter getSorterClass(){

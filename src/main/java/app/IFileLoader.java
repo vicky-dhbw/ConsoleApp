@@ -1,8 +1,9 @@
 package app;
 
-import java.util.ArrayList;
+import common.org.Gin;
+import java.util.List;
 
 public interface IFileLoader {
 
-    ArrayList<String> loadFile(String filepath);
+    List<Gin> loadFile(String filepath);
 }

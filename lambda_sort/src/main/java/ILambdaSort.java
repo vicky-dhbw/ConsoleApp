@@ -1,3 +1,5 @@
+
+
 public interface ILambdaSort {
-    void sort(String[] values);
+    void sort(String[] gins);
 }

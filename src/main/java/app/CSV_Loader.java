@@ -1,16 +1,18 @@
 package app;
 
+import common.org.Gin;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
+import java.util.List;
 
 public class CSV_Loader implements IFileLoader,ISearchFile{
 
     @Override
     @SuppressWarnings("unchecked")
-    public ArrayList<String> loadFile(String filename) {
+    public List<Gin> loadFile(String filename) {
         if(searchFile(filename)){
             try{
                 URL[] urls={new File(Configuration.INSTANCE.fullPathToCSVLoaderJavaArchive).toURI().toURL()};
@@ -21,16 +23,15 @@ public class CSV_Loader implements IFileLoader,ISearchFile{
                 Object csvLoaderPort=csvLoaderClass.getDeclaredField("port").get(csvLoaderInstance);
 
                 Method load=csvLoaderPort.getClass().getMethod("load", String.class);
-                System.out.println("data successfully loaded :)");
 
-                return (ArrayList<String>) load.invoke(csvLoaderPort,Configuration.INSTANCE.pathToCSVFile);
+                return (List<Gin>) load.invoke(csvLoaderPort,Configuration.INSTANCE.pathToCSVFile);
 
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
         System.out.println("data failed to load :(");
-        return new ArrayList<String>();
+        return null;
     }
 
     @Override

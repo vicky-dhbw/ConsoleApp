@@ -12,8 +12,8 @@ public enum Configuration {
     public final String fullPathToXMLLoaderJavaArchive=userDirectory+fileSeparator+"xml_loader"
             +fileSeparator+"jar"+fileSeparator+nameOfXMLLoaderJavaArchive;
 
-    public final String nameOfJSONLoaderJavaArchive = "json_loader.jar";
-    public final String fullPathToJSONLoaderJavaArchive=userDirectory+fileSeparator+"json_loader"
+    public final String nameOfJSONLoaderJavaArchive = "json_loader_.jar";
+    public final String fullPathToJSONLoaderJavaArchive=userDirectory+fileSeparator+"JSON_Load"
             +fileSeparator+"jar"+fileSeparator+nameOfJSONLoaderJavaArchive;
 
     public final String fullPathToMergeSortJavaArchive=userDirectory+fileSeparator+"merge_sort"

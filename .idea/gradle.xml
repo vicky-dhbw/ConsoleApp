@@ -9,7 +9,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/JSONLoader" />
+            <option value="$PROJECT_DIR$/JSON_Load" />
             <option value="$PROJECT_DIR$/aes_cryptography" />
+            <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/csv_loader" />
             <option value="$PROJECT_DIR$/json_loader" />
             <option value="$PROJECT_DIR$/lambdaSort" />

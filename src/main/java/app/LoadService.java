@@ -1,14 +1,17 @@
 package app;
+import common.org.Gin;
 import org.apache.commons.io.FilenameUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoadService{
 
     private IFileLoader fileLoader;
     private String filename;
 
-    public ArrayList<String> executeLoadService(String command){
+    public List<Gin> executeLoadService(String command){
+        List<Gin> gins=new ArrayList<>();
         filename=command.split(" ")[2];
         fileLoader=getFileExtensionClassLoader(filename);
         if(fileLoader==null){

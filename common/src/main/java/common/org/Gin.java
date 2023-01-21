@@ -1,3 +1,5 @@
+package common.org;
+
 public class Gin {
 
     private String manufacturer;

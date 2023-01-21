@@ -22,10 +22,12 @@ public class CommandValidator {
             if(allowedCommand.contains(command)|| command.contains(allowedCommand)){
                 CommandValidatorGetter validatorClass=new CommandValidatorGetter(command);
                 ICommandValidator commandValidator=validatorClass.getCommandValidator();
-
-                if(commandValidator.validate(command)){
-                    return serviceClassGetter.getServiceClass(command);
+                if(commandValidator!=null){
+                    if(commandValidator.validate(command)){
+                        return serviceClassGetter.getServiceClass(command);
+                    }
                 }
+
             }
 
         }
